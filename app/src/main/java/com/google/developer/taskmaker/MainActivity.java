@@ -89,10 +89,10 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemClick(View v, int position) {
         //TODO: Handle list item click event
         // Create an Intent to navigate to the TaskDetailActivity
-
+        Intent intent = new Intent(this,TaskDetailActivity.class);
 
         //TODO: Set the data (URI and item Id) in the Intent
-
+        intent.putExtra();
 
         //TODO: Start the Activity, passing the Intent
 

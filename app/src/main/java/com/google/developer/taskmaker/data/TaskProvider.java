@@ -73,7 +73,7 @@ public class TaskProvider extends ContentProvider {
 
                 //TODO Return a cursor that queries the database for all Tasks
 
-                );
+                //);
 
                 //TODO Break from the switch statement
                 break;
@@ -84,7 +84,7 @@ public class TaskProvider extends ContentProvider {
                 //TODO Return a cursor that queries the database for the one Task,
                 // specifying its Id in the selection parameter
 
-                );
+                //);
 
                 //TODO Break from the switch statement
                 break;

@@ -16,6 +16,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.google.developer.taskmaker.MainActivity"
@@ -38,23 +39,25 @@
             android:name="com.google.developer.taskmaker.TaskDetailActivity"
             android:exported="false"
             android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
+        <!--
+        <service
+            android:name=".data.TaskUpdateService"
+            android:exported="false" />
 
         <service
-            android:name="com.google.developer.taskmaker.data.TaskUpdateService"
-            android:exported="false" />
-        <service
-            android:name="com.google.developer.taskmaker.reminders.ReminderAlarmService"
+            android:name=".reminders.ReminderAlarmService"
             android:exported="false" />
 
         <provider
-            android:name="com.google.developer.taskmaker.data.TaskProvider"
+            android:name=".data.TaskProvider"
             android:authorities="com.google.developer.taskmaker"
-            android:exported="false" />
+            android:exported="false"/>
 
         <service
-            android:name="com.google.developer.taskmaker.data.CleanupJobService"
-            android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+            android:name=".data.CleanupJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true"/>
+        -->
     </application>
 
 </manifest>

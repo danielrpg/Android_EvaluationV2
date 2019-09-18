@@ -25,80 +25,69 @@
 17-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:10:9-41
 18        android:supportsRtl="true"
 18-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:11:9-35
-19        android:theme="@style/AppTheme" >
-19-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:12:9-40
-20        <activity
-20-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:13:9-21:20
-21            android:name="com.google.developer.taskmaker.MainActivity"
-21-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:14:13-41
-22            android:theme="@style/AppTheme.NoActionBar" >
-22-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:15:13-56
-23            <intent-filter>
-23-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:16:13-20:29
-24                <action android:name="android.intent.action.MAIN" />
-24-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:17:17-68
-24-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:17:25-66
-25
-26                <category android:name="android.intent.category.LAUNCHER" />
-26-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:19:17-76
-26-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:19:27-74
-27            </intent-filter>
-28        </activity>
-29        <activity
-29-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:23:9-26:57
-30            android:name="com.google.developer.taskmaker.SettingsActivity"
-30-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:24:13-45
-31            android:exported="false"
-31-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:25:13-37
-32            android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
-32-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:26:13-55
-33        <activity
-33-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:28:9-31:57
-34            android:name="com.google.developer.taskmaker.AddTaskActivity"
-34-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:29:13-44
-35            android:exported="false"
-35-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:30:13-37
-36            android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
-36-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:31:13-55
-37        <activity
-37-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:33:9-36:57
-38            android:name="com.google.developer.taskmaker.TaskDetailActivity"
-38-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:34:13-47
-39            android:exported="false"
-39-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:35:13-37
-40            android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
-40-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:36:13-55
-41
-42        <service
-42-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:38:9-40:40
-43            android:name="com.google.developer.taskmaker.data.TaskUpdateService"
-43-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:39:13-51
-44            android:exported="false" />
-44-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:40:13-37
-45        <service
-45-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:42:9-44:40
-46            android:name="com.google.developer.taskmaker.reminders.ReminderAlarmService"
-46-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:43:13-59
-47            android:exported="false" />
-47-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:44:13-37
-48
-49        <provider
-49-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:46:9-49:39
-50            android:name="com.google.developer.taskmaker.data.TaskProvider"
-50-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:47:13-46
-51            android:authorities="com.google.developer.taskmaker"
-51-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:48:13-65
-52            android:exported="false" />
-52-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:49:13-37
-53
-54        <service
-54-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:51:9-54:38
-55            android:name="com.google.developer.taskmaker.data.CleanupJobService"
-55-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:52:13-51
-56            android:exported="true"
-56-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:54:13-36
-57            android:permission="android.permission.BIND_JOB_SERVICE" />
-57-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:53:13-69
-58    </application>
-59
-60</manifest>
+19        android:testOnly="true"
+20        android:theme="@style/AppTheme" >
+20-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:12:9-40
+21        <activity
+21-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:13:9-21:20
+22            android:name="com.google.developer.taskmaker.MainActivity"
+22-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:14:13-41
+23            android:theme="@style/AppTheme.NoActionBar" >
+23-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:15:13-56
+24            <intent-filter>
+24-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:16:13-20:29
+25                <action android:name="android.intent.action.MAIN" />
+25-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:17:17-68
+25-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:17:25-66
+26
+27                <category android:name="android.intent.category.LAUNCHER" />
+27-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:19:17-76
+27-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:19:27-74
+28            </intent-filter>
+29        </activity>
+30        <activity
+30-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:23:9-26:57
+31            android:name="com.google.developer.taskmaker.SettingsActivity"
+31-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:24:13-45
+32            android:exported="false"
+32-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:25:13-37
+33            android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
+33-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:26:13-55
+34        <activity
+34-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:28:9-31:57
+35            android:name="com.google.developer.taskmaker.AddTaskActivity"
+35-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:29:13-44
+36            android:exported="false"
+36-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:30:13-37
+37            android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
+37-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:31:13-55
+38        <activity
+38-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:33:9-36:57
+39            android:name="com.google.developer.taskmaker.TaskDetailActivity"
+39-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:34:13-47
+40            android:exported="false"
+40-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:35:13-37
+41            android:parentActivityName="com.google.developer.taskmaker.MainActivity" />
+41-->C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:36:13-55
+42        <!--
+43        <service
+44            android:name=".data.TaskUpdateService"
+45            android:exported="false" />
+46
+47        <service
+48            android:name=".reminders.ReminderAlarmService"
+49            android:exported="false" />
+50
+51        <provider
+52            android:name=".data.TaskProvider"
+53            android:authorities="com.google.developer.taskmaker"
+54            android:exported="false"/>
+55
+56        <service
+57            android:name=".data.CleanupJobService"
+58            android:permission="android.permission.BIND_JOB_SERVICE"
+59            android:exported="true"/>
+60        -->
+61    </application>
+62
+63</manifest>
