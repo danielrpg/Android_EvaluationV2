@@ -1,0 +1,172 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\1a565d561e73523cfde93032b5e4f241\design-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:preference-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\5b701f9762c8454f771d6b437dba6891\preference-v7-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\96ec3159e9cdafe31c960eb8eede719e\appcompat-v7-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\32603cb6266624d8adb9fb18c3e354e3\recyclerview-v7-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\b85946afde5a43ea608eda5eccc7d9e8\support-v4-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\2504c5ed5ee9545e92a6ed94245b7109\support-fragment-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\763bcc8922987161353b83ab4da2d617\animated-vector-drawable-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\0e4b8c4d5beadb2d153c0a2ae7561179\support-core-ui-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\9ebd575325adb4f1715cbd33cc7fb1eb\support-core-utils-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\941c23b8e283edcfbd160b204c678af9\support-vector-drawable-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\07d39432c8967fd9e82176e2bdb9c63b\transition-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\9c0db70b5ab5bab747773bbfa20f7935\support-media-compat-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\5e395bae4e00ec017ce476404d11e882\support-compat-27.1.1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\1e0d6bc8ae15351e705eea926fa992b3\livedata-core-1.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\e29b9d9bab2be31618a2ec772979406c\viewmodel-1.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\2e39cb929360acecda17a30f51c91155\runtime-1.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\d05cd91fa0e0d00f971cc74baae16029\runtime-1.1.0\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+	package
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:3:11-51
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:1-58:12
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:5:22-78
+application
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:7:5-56:19
+	android:supportsRtl
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:10:9-41
+	android:icon
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:9:9-43
+	android:allowBackup
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:8:9-35
+	android:theme
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:12:9-40
+activity#com.google.developer.taskmaker.MainActivity
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:13:9-21:20
+	android:theme
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:14:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:17:17-68
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:19:17-76
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:19:27-74
+activity#com.google.developer.taskmaker.SettingsActivity
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:23:9-26:57
+	android:parentActivityName
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:26:13-55
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:24:13-45
+activity#com.google.developer.taskmaker.AddTaskActivity
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:28:9-31:57
+	android:parentActivityName
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:31:13-55
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:29:13-44
+activity#com.google.developer.taskmaker.TaskDetailActivity
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:33:9-36:57
+	android:parentActivityName
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:36:13-55
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:35:13-37
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:34:13-47
+service#com.google.developer.taskmaker.data.TaskUpdateService
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:38:9-40:40
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:40:13-37
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:39:13-51
+service#com.google.developer.taskmaker.reminders.ReminderAlarmService
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:42:9-44:40
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:44:13-37
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:43:13-59
+provider#com.google.developer.taskmaker.data.TaskProvider
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:46:9-49:39
+	android:authorities
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:48:13-65
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:49:13-37
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:47:13-46
+service#com.google.developer.taskmaker.data.CleanupJobService
+ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:51:9-54:38
+	android:exported
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:54:13-36
+	android:permission
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:53:13-69
+	android:name
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml:52:13-51
+uses-sdk
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\1a565d561e73523cfde93032b5e4f241\design-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\1a565d561e73523cfde93032b5e4f241\design-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:preference-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\5b701f9762c8454f771d6b437dba6891\preference-v7-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:preference-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\5b701f9762c8454f771d6b437dba6891\preference-v7-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\96ec3159e9cdafe31c960eb8eede719e\appcompat-v7-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\96ec3159e9cdafe31c960eb8eede719e\appcompat-v7-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\32603cb6266624d8adb9fb18c3e354e3\recyclerview-v7-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\32603cb6266624d8adb9fb18c3e354e3\recyclerview-v7-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\b85946afde5a43ea608eda5eccc7d9e8\support-v4-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\b85946afde5a43ea608eda5eccc7d9e8\support-v4-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\2504c5ed5ee9545e92a6ed94245b7109\support-fragment-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\2504c5ed5ee9545e92a6ed94245b7109\support-fragment-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\763bcc8922987161353b83ab4da2d617\animated-vector-drawable-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\763bcc8922987161353b83ab4da2d617\animated-vector-drawable-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\0e4b8c4d5beadb2d153c0a2ae7561179\support-core-ui-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\0e4b8c4d5beadb2d153c0a2ae7561179\support-core-ui-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\9ebd575325adb4f1715cbd33cc7fb1eb\support-core-utils-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\9ebd575325adb4f1715cbd33cc7fb1eb\support-core-utils-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\941c23b8e283edcfbd160b204c678af9\support-vector-drawable-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\941c23b8e283edcfbd160b204c678af9\support-vector-drawable-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\07d39432c8967fd9e82176e2bdb9c63b\transition-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\07d39432c8967fd9e82176e2bdb9c63b\transition-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\9c0db70b5ab5bab747773bbfa20f7935\support-media-compat-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\9c0db70b5ab5bab747773bbfa20f7935\support-media-compat-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\5e395bae4e00ec017ce476404d11e882\support-compat-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\5e395bae4e00ec017ce476404d11e882\support-compat-27.1.1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\1e0d6bc8ae15351e705eea926fa992b3\livedata-core-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\1e0d6bc8ae15351e705eea926fa992b3\livedata-core-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\e29b9d9bab2be31618a2ec772979406c\viewmodel-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\e29b9d9bab2be31618a2ec772979406c\viewmodel-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\2e39cb929360acecda17a30f51c91155\runtime-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\2e39cb929360acecda17a30f51c91155\runtime-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\d05cd91fa0e0d00f971cc74baae16029\runtime-1.1.0\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\franz.vilela\.gradle\caches\transforms-2\files-2.1\d05cd91fa0e0d00f971cc74baae16029\runtime-1.1.0\AndroidManifest.xml:20:5-44
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\franz.vilela\AndroidStudioProjects\Android_Evaluation\app\src\main\AndroidManifest.xml

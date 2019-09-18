@@ -14,7 +14,6 @@ public class CleanupJobService extends JobService {
         new CleanupTask().execute(params);
 
         //TODO Work is not yet complete
-
     }
 
     @Override
