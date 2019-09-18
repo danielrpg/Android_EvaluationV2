@@ -1,20 +1,12 @@
 package com.gdfp.android_evaluationv2.reminders;
 
 import android.app.IntentService;
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-
-import com.google.developer.taskmaker.MainActivity;
-import com.google.developer.taskmaker.R;
-import com.google.developer.taskmaker.data.DatabaseContract;
-import com.google.developer.taskmaker.data.DatabaseContract.TaskColumns;
 
 public class ReminderAlarmService extends IntentService {
     private static final String TAG = ReminderAlarmService.class.getSimpleName();

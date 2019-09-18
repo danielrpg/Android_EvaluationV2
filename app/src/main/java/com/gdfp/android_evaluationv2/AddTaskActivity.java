@@ -3,10 +3,6 @@ package com.gdfp.android_evaluationv2;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SwitchCompat;
-import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +10,12 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-import com.google.developer.taskmaker.data.DatabaseContract.TaskColumns;
-import com.google.developer.taskmaker.data.TaskUpdateService;
-import com.google.developer.taskmaker.views.DatePickerFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
+import com.gdfp.android_evaluationv2.data.TaskUpdateService;
+import com.gdfp.android_evaluationv2.views.DatePickerFragment;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 

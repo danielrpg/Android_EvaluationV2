@@ -11,8 +11,9 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 public class TaskProvider extends ContentProvider {
     private static final String TAG = TaskProvider.class.getSimpleName();

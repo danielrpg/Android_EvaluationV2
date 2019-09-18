@@ -4,23 +4,23 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.google.developer.taskmaker.data.DatabaseContract;
-import com.google.developer.taskmaker.data.TaskAdapter;
-import com.google.developer.taskmaker.data.TaskUpdateService;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.gdfp.android_evaluationv2.data.DatabaseContract;
+import com.gdfp.android_evaluationv2.data.TaskAdapter;
+import com.gdfp.android_evaluationv2.data.TaskDbHelper;
 
 // TODO: Make the Activity implement the LoaderCallbacks interface
 public class MainActivity extends AppCompatActivity implements
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements
     private static final String TAG = "MainActivity";
 
     private TaskAdapter mAdapter;
+    private SQLiteDatabase mDatabase;
 
     // TODO:Create ID for the specific Loader in this Activity
     private static final int ID_TASK_LOADER = 0;
@@ -40,13 +41,15 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        TaskDbHelper helper =new TaskDbHelper(this);
+        mDatabase = helper.getWritableDatabase();
         setSupportActionBar(toolbar);
 
-        mAdapter = new TaskAdapter(null);
+        mAdapter = new TaskAdapter(getAllItems(),this);
         mAdapter.setOnItemClickListener(this);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -89,10 +92,10 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemClick(View v, int position) {
         //TODO: Handle list item click event
         // Create an Intent to navigate to the TaskDetailActivity
-
+        Intent intent = new Intent(this,TaskDetailActivity.class);
 
         //TODO: Set the data (URI and item Id) in the Intent
-
+        //intent.putExtra();
 
         //TODO: Start the Activity, passing the Intent
 
@@ -108,13 +111,13 @@ public class MainActivity extends AppCompatActivity implements
         //TODO: If the Task is checked...
 
 
-            //TODO: Store the Task as inactive in the IS_COMPLETE column
+        //TODO: Store the Task as inactive in the IS_COMPLETE column
 
 
-            //TODO: If the Task is not checked...
+        //TODO: If the Task is not checked...
 
 
-            //TODO: Store the Task as active in the IS_COMPLETE column
+        //TODO: Store the Task as active in the IS_COMPLETE column
 
 
         //TODO: Update the Task, passing the context, the ContentURI, the Task's Id,
@@ -142,13 +145,13 @@ public class MainActivity extends AppCompatActivity implements
         //TODO: If the order is "default"...
 
 
-            //TODO: Set the sort order as "DEFAULT_SORT"
+        //TODO: Set the sort order as "DEFAULT_SORT"
 
 
 
         //TODO: If the order is "default"...
 
-            //TODO: Set the sort order as "DATE_SORT"
+        //TODO: Set the sort order as "DATE_SORT"
 
         //TODO: Return the sort order to the query
 
@@ -166,5 +169,17 @@ public class MainActivity extends AppCompatActivity implements
 
         // Swap the old cursor in the adapter with a null cursor
         mAdapter.swapCursor(null);
+    }
+
+    private Cursor getAllItems() {
+        return mDatabase.query(
+                DatabaseContract.TABLE_TASKS,
+                null,
+                null,
+                null,
+                null,
+                null,
+                DatabaseContract.TaskColumns.DUE_DATE+ " DESC"
+        );
     }
 }

@@ -2,7 +2,9 @@ package com.gdfp.android_evaluationv2.data;
 
 import android.database.Cursor;
 
-import static com.google.developer.taskmaker.data.DatabaseContract.*;
+import static com.gdfp.android_evaluationv2.data.DatabaseContract.getColumnInt;
+import static com.gdfp.android_evaluationv2.data.DatabaseContract.getColumnLong;
+import static com.gdfp.android_evaluationv2.data.DatabaseContract.getColumnString;
 
 /**
  * Helpful data model for holding attributes related to a task.
@@ -46,11 +48,11 @@ public class Task {
      * Create a new task from a database Cursor
      */
     public Task(Cursor cursor) {
-        this.id = getColumnLong(cursor, TaskColumns._ID);
-        this.description = getColumnString(cursor, TaskColumns.DESCRIPTION);
-        this.isComplete = getColumnInt(cursor, TaskColumns.IS_COMPLETE) == 1;
-        this.isPriority = getColumnInt(cursor, TaskColumns.IS_PRIORITY) == 1;
-        this.dueDateMillis = getColumnLong(cursor, TaskColumns.DUE_DATE);
+        this.id = getColumnLong(cursor, DatabaseContract.TaskColumns._ID);
+        this.description = getColumnString(cursor, DatabaseContract.TaskColumns.DESCRIPTION);
+        this.isComplete = getColumnInt(cursor, DatabaseContract.TaskColumns.IS_COMPLETE) == 1;
+        this.isPriority = getColumnInt(cursor, DatabaseContract.TaskColumns.IS_PRIORITY) == 1;
+        this.dueDateMillis = getColumnLong(cursor, DatabaseContract.TaskColumns.DUE_DATE);
     }
 
     /**

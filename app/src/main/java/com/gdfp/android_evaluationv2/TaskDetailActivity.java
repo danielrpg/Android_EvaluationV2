@@ -4,7 +4,6 @@ import android.app.DatePickerDialog;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,11 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.developer.taskmaker.data.DatabaseContract;
-import com.google.developer.taskmaker.data.TaskUpdateService;
-import com.google.developer.taskmaker.reminders.AlarmScheduler;
-import com.google.developer.taskmaker.views.DatePickerFragment;
-import com.google.developer.taskmaker.views.TaskTitleView;
+import androidx.appcompat.app.AppCompatActivity;
+import com.gdfp.android_evaluationv2.views.TaskTitleView;
 
 import java.util.Calendar;
 
@@ -26,13 +22,13 @@ public class TaskDetailActivity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener {
 
     // Declare Custom TaskTitleView
-    private TaskTitleView textDescription;
+    public TaskTitleView textDescription;
 
     // Declare TextView's
     private TextView textDate;
 
     // Declare ImageView's
-    private ImageView imagePriority;
+    public ImageView imagePriority;
 
     // Declare field Uri
     Uri mUri;
@@ -61,13 +57,13 @@ public class TaskDetailActivity extends AppCompatActivity implements
     private void initView() {
 
         //TODO: Initialize the textDescription TextView
-
+        textDescription = findViewById(R.id.text_description);
 
         //TODO: Initialize the textDate TextView
-
+        textDate = findViewById(R.id.text_date);
 
         //TODO: Initialize the imagePriority ImageView
-
+        imagePriority = findViewById(R.id.priority);
     }
 
     private void getData() {
@@ -134,7 +130,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
         }
 
         // Set the description of the Task on the textDate TextView
-        textDescription.setText(taskDescription);
+        textDescription.setText();
     }
 
     @Override
