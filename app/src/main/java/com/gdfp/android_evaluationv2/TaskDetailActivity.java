@@ -14,8 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.gdfp.android_evaluationv2.data.DatabaseContract;
+import com.gdfp.android_evaluationv2.data.TaskUpdateService;
+import com.gdfp.android_evaluationv2.reminders.AlarmScheduler;
+import com.gdfp.android_evaluationv2.views.DatePickerFragment;
 import com.gdfp.android_evaluationv2.views.TaskTitleView;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class TaskDetailActivity extends AppCompatActivity implements
@@ -47,10 +54,11 @@ public class TaskDetailActivity extends AppCompatActivity implements
         //TODO: Persist the Uri as a field of the class
 
         //TODO: Display attributes of the provided task in the UI
-
         //TODO: Initialize the view components of the Activity
+        initView();
 
         //TODO: Get the data from the database and display it in the UI
+        getData();
 
     }
 
@@ -70,67 +78,68 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
         //TODO: Query the database, passing the Uri of a specific Task
 
-
         //TODO: Assert that the cursor is not null
-
+        if (mDetailCursor == null) {
+            return;
+        }
 
         //TODO Get the column index of the checkbox
-
+        int indexCheckbox = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.IS_COMPLETE);
 
         //TODO Get the column index of the priority
-
+        int indexPriority = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.IS_PRIORITY);
 
         //TODO Get the column index of the dueDate
+        int indexDueDate = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.DUE_DATE);
 
         //TODO Get the column index of the taskDescription
-
+        int indexDescription = mDetailCursor.getColumnIndex(DatabaseContract.TaskColumns.DESCRIPTION);
 
         //TODO Move to the beginning of the cursor
+        mDetailCursor.moveToFirst();
 
 
         //TODO Get the value of isComplete from the cursor
-
+        int checkbox = mDetailCursor.getInt(indexCheckbox);
 
         //TODO Get the value of priority from the cursor
-
+        int priority = mDetailCursor.getInt(indexPriority);
 
         //TODO Get the value of dueDate from the cursor
-
+        long dueDate = mDetailCursor.getLong(indexDueDate);
 
         //TODO Get the value of taskDescription from the cursor
-
+        String taskDescription = mDetailCursor.getString(indexDescription);
 
         //TODO If the Task is a priority...
-
+        if (priority == 1) {
 
             //TODO Set the imagePriority ImageView with the priority icon
-
-
-            //TODO If the Task is a non-priority...
-
+            imagePriority.setImageResource(R.drawable.ic_priority);
+        } else {//TODO If the Task is a non-priority...
             //TODO Set the imagePriority ImageView with the non-priority icon
-
-
+            imagePriority.setImageResource(R.drawable.ic_not_priority);
+        }
         //TODO If there is no due date...
-
-
+        if (dueDate == Long.MAX_VALUE) {
             //TODO Display the "Not Set" text in the textDate TextView
+            textDate.setText(R.string.NotSet);
 
-
-         //TODO If there is a due date...
+        } else {//TODO If there is a due date...
 
             //TODO Format the dueDate
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            String formatted = formatter.format(new Date(dueDate));
 
-
-            // Make the textDate TextView visible
+            //TODO Make the textDate TextView visible
             textDate.setVisibility(View.VISIBLE);
 
-            // Set the date of the Task on the textDate TextView
+            //TODO Set the date of the Task on the textDate TextView
             textDate.setText(String.format("Due Date : %s", formatted));
         }
 
-        // Set the description of the Task on the textDate TextView
-        textDescription.setText();
+        //TODO Set the description of the Task on the textDate TextView
+        textDescription.setText(taskDescription);
     }
 
     @Override

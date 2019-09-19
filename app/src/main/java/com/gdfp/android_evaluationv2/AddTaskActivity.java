@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -83,7 +84,6 @@ public class AddTaskActivity extends AppCompatActivity implements
         //Set to noon on the selected day
         Calendar c = Calendar.getInstance();
 
-
         setDateSelection(c.getTimeInMillis());
     }
 
@@ -99,6 +99,9 @@ public class AddTaskActivity extends AppCompatActivity implements
     private void saveItem() {
         //TODO Insert a new item
         ContentValues values = new ContentValues(4);
+        values.put("Description",mDescriptionView.getText().toString());
+        values.put("DueDate",mDueDate);
+
 
 
         TaskUpdateService.insertNewTask(this, values);
