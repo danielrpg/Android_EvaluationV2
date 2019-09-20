@@ -68,8 +68,4 @@ public class TaskTitleView extends AppCompatTextView {
         mState = state;
     }
 
-
-    //public void setText(String text){
-        //setText(text);
-    //}
 }

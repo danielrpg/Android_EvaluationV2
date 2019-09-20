@@ -24,12 +24,17 @@ public class DatabaseContract {
 
     /* Sort order constants */
     //TODO Priority first, Completed last, the rest by date
+    public static final String SORT_BY_DUEDATE_DESC = TaskColumns.DUE_DATE + " DESC";
 
 
     //TODO Completed last, then by date, followed by priority
 
 
     //TODO Base content Uri for accessing the provider
+    public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
+            .authority(CONTENT_AUTHORITY)
+            .appendPath(TABLE_TASKS)
+            .build();
 
 
     /* Helpers to retrieve column values */

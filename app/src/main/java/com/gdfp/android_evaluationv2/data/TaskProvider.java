@@ -73,8 +73,15 @@ public class TaskProvider extends ContentProvider {
             case TASKS:
 
                 //TODO Return a cursor that queries the database for all Tasks
-
-                //);
+                returnCursor = db.query(
+                        DatabaseContract.TABLE_TASKS,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        DatabaseContract.SORT_BY_DUEDATE_DESC
+                );
 
                 //TODO Break from the switch statement
                 break;
@@ -84,8 +91,15 @@ public class TaskProvider extends ContentProvider {
 
                 //TODO Return a cursor that queries the database for the one Task,
                 // specifying its Id in the selection parameter
-
-                //);
+                returnCursor = db.query(
+                        DatabaseContract.TABLE_TASKS,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        DatabaseContract.SORT_BY_DUEDATE_DESC
+                );
 
                 //TODO Break from the switch statement
                 break;
@@ -104,6 +118,7 @@ public class TaskProvider extends ContentProvider {
         if (context != null) {
 
             //TODO Register to watch this Content URI for changes
+            context.getContentResolver().notifyChange(uri, null);
         }
 
         //TODO Return the cursor
@@ -174,8 +189,10 @@ public class TaskProvider extends ContentProvider {
                 //TODO Get the id of said Task
 
                 //TODO Create a selection filter using the _ID column of the Task column
+                selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
 
                 //TODO Create a selection argument using the id of the Task
+
 
                 // Break from the switch statement
                 break;
@@ -216,6 +233,7 @@ public class TaskProvider extends ContentProvider {
 
                 //TODO Rows aren't counted with null selection
 
+
                 // Break from the switch statement
                 break;
 
@@ -244,6 +262,7 @@ public class TaskProvider extends ContentProvider {
 
         //TODO Delete the Task in the database using the passed filters,
         // returning the number of rows deleted, if any.
+        int count = db.delete(DatabaseContract.TABLE_TASKS, selection, selectionArgs);
 
         //TODO If there were row(s) deleted...
         if (count > 0) {
@@ -270,4 +289,6 @@ public class TaskProvider extends ContentProvider {
             Log.w(TAG, "Unable to schedule cleanup job");
         }
     }
+
+
 }

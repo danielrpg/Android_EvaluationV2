@@ -167,16 +167,4 @@ public class MainActivity extends AppCompatActivity implements
         // Swap the old cursor in the adapter with a null cursor
         mAdapter.swapCursor(null);
     }
-
-    private Cursor getAllItems() {
-        return mDatabase.query(
-                DatabaseContract.TABLE_TASKS,
-                null,
-                null,
-                null,
-                null,
-                null,
-                DatabaseContract.TaskColumns.DUE_DATE + " DESC"
-        );
-    }
 }
