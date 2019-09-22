@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
+import com.gdfp.android_evaluationv2.reminders.ReminderAlarmService;
+
 
 /* Process DB actions on a background thread */
 public class TaskUpdateService extends IntentService {

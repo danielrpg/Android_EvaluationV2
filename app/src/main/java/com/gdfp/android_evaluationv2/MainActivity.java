@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements
     private static final String TAG = "MainActivity";
 
     private TaskAdapter mAdapter;
-    private SQLiteDatabase mDatabase;
 
     // TODO:Create ID for the specific Loader in this Activity
     private static final int ID_TASK_LOADER = 0;
@@ -42,11 +41,9 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        TaskDbHelper helper =new TaskDbHelper(this);
-        mDatabase = helper.getWritableDatabase();
         setSupportActionBar(toolbar);
 
-        mAdapter = new TaskAdapter(getAllItems(),this);
+        mAdapter = new TaskAdapter(getAllItems(), this);
         mAdapter.setOnItemClickListener(this);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -64,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onResume();
 
         //TODO: Restart the Loader
+
 
     }
 
@@ -92,12 +90,13 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemClick(View v, int position) {
         //TODO: Handle list item click event
         // Create an Intent to navigate to the TaskDetailActivity
-        Intent intent = new Intent(this,TaskDetailActivity.class);
+        Intent detailsIntent = new Intent(this, TaskDetailActivity.class);
 
         //TODO: Set the data (URI and item Id) in the Intent
-        //intent.putExtra();
+        detailsIntent.setData();
 
         //TODO: Start the Activity, passing the Intent
+        startActivity(detailsIntent);
 
     }
 
@@ -109,17 +108,16 @@ public class MainActivity extends AppCompatActivity implements
         ContentValues cv = new ContentValues();
 
         //TODO: If the Task is checked...
+        if (active) {
+            //TODO: Store the Task as inactive in the IS_COMPLETE column
 
-
-        //TODO: Store the Task as inactive in the IS_COMPLETE column
-
-
+        }
         //TODO: If the Task is not checked...
+        if (!active) {
 
+            //TODO: Store the Task as active in the IS_COMPLETE column
 
-        //TODO: Store the Task as active in the IS_COMPLETE column
-
-
+        }
         //TODO: Update the Task, passing the context, the ContentURI, the Task's Id,
         // and the ContentValues object
 
@@ -146,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements
 
 
         //TODO: Set the sort order as "DEFAULT_SORT"
-
 
 
         //TODO: If the order is "default"...
@@ -179,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements
                 null,
                 null,
                 null,
-                DatabaseContract.TaskColumns.DUE_DATE+ " DESC"
+                DatabaseContract.TaskColumns.DUE_DATE + " DESC"
         );
     }
 }

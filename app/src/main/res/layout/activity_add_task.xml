@@ -9,7 +9,7 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
-    tools:context="com.google.developer.taskmaker.AddTaskActivity">
+    tools:context=".AddTaskActivity">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/text_wrapper_description"

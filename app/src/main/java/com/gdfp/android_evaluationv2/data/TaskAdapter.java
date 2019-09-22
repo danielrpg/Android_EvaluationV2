@@ -124,7 +124,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         int isPriority = mCursor.getInt(indexPriority);
 
         //TODO Get the value of dueDate from the cursor
-        long dueDateMillis = mCursor.getLong(indexDueDate);
+        long dueDate = mCursor.getLong(indexDueDate);
 
         //TODO Get the value of taskDescription from the cursor
         String description = mCursor.getString(indexDescription);
@@ -144,7 +144,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             holder.nameView.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
             //TODO If the Task is overdue...
-        } else if (dueDateMillis < System.currentTimeMillis()) {
+        } else if (dueDate < System.currentTimeMillis()) {
 
             //TODO Set the state of the nameView to "OVERDUE"
             holder.nameView.setState(TaskTitleView.OVERDUE);
@@ -175,7 +175,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         }
 
         //TODO If there is no due date...
-        if (dueDateMillis == Long.MAX_VALUE) {
+        if (dueDate == Long.MAX_VALUE) {
 
             //TODO Display the "Not Set" text in the dateView TextView
             holder.dateView.setText(R.string.NotSet);
@@ -184,7 +184,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
             //TODO Format the dueDate
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            String dateString = formatter.format(new Date(dueDateMillis));
+            String dateString = formatter.format(new Date(dueDate));
             //TODO Make the dateView TextView visible
             holder.dateView.setVisibility(View.VISIBLE);
 
