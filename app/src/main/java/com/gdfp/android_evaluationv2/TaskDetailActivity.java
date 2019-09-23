@@ -52,6 +52,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
         final Uri taskUri = getIntent().getData();
 
         //TODO: Persist the Uri as a field of the class
+        mUri = taskUri;
 
         //TODO: Display attributes of the provided task in the UI
         //TODO: Initialize the view components of the Activity
@@ -77,6 +78,13 @@ public class TaskDetailActivity extends AppCompatActivity implements
     private void getData() {
 
         //TODO: Query the database, passing the Uri of a specific Task
+        mDetailCursor = getContentResolver().query(
+                mUri,
+                null,
+                null,
+                null,
+                null
+        );
 
         //TODO: Assert that the cursor is not null
         if (mDetailCursor == null) {
@@ -123,13 +131,15 @@ public class TaskDetailActivity extends AppCompatActivity implements
         //TODO If there is no due date...
         if (dueDate == Long.MAX_VALUE) {
             //TODO Display the "Not Set" text in the textDate TextView
-            textDate.setText(R.string.NotSet);
+            textDate.setText(R.string.date_empty);
 
         } else {//TODO If there is a due date...
 
             //TODO Format the dueDate
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             String formatted = formatter.format(new Date(dueDate));
+            // also you can do this
+            // CharSequence formatted = DateUtils.getRelativeTimeSpanString(this, dueDate);
 
             //TODO Make the textDate TextView visible
             textDate.setVisibility(View.VISIBLE);

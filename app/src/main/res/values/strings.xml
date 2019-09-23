@@ -22,6 +22,4 @@
     <string name="pref_sortBy_default" translatable="false">default</string>
     <string name="pref_sortBy_due" translatable="false">due</string>
     <string name="date_error">Setting a reminder in the past is not allowed</string>
-
-    <string name="NotSet">Not set</string>
 </resources>

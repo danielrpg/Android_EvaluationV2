@@ -159,7 +159,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
             //TODO un-Check the checkbox
             holder.checkBox.setChecked(false);
-            ;
         }
 
         //TODO If the Task is a priority...
@@ -178,13 +177,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         if (dueDate == Long.MAX_VALUE) {
 
             //TODO Display the "Not Set" text in the dateView TextView
-            holder.dateView.setText(R.string.NotSet);
+            holder.dateView.setText(R.string.date_empty);
 
         } else { //TODO If there is a due date...
 
             //TODO Format the dueDate
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             String dateString = formatter.format(new Date(dueDate));
+            //CharSequence formatted = DateUtils.getRelativeTimeSpanString(mContext, dueDate);
+
             //TODO Make the dateView TextView visible
             holder.dateView.setVisibility(View.VISIBLE);
 
