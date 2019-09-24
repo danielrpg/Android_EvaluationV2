@@ -14,13 +14,13 @@ public class CleanupJobService extends JobService {
         new CleanupTask().execute(params);
 
         //TODO Work is not yet complete
-
+        return true;
     }
 
     @Override
     public boolean onStopJob(JobParameters params) {
         //TODO No need to reschedule any jobs
-
+        return false;
     }
 
     /* Handle access to the database on a background thread */
@@ -40,7 +40,7 @@ public class CleanupJobService extends JobService {
         @Override
         protected void onPostExecute(JobParameters jobParameters) {
             //TODO Notify that the work is now done
-
+            jobFinished(jobParameters,false);
         }
     }
 }

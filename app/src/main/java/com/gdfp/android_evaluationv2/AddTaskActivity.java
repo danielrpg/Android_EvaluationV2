@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.gdfp.android_evaluationv2.data.DatabaseContract;
 import com.gdfp.android_evaluationv2.data.TaskUpdateService;
 import com.gdfp.android_evaluationv2.views.DatePickerFragment;
 import com.google.android.material.textfield.TextInputEditText;
@@ -55,8 +56,6 @@ public class AddTaskActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
 
         //TODO noinspection SimplifiableIfStatement
-
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -75,7 +74,7 @@ public class AddTaskActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         DatePickerFragment dialogFragment = new DatePickerFragment();
-        dialogFragment.show(getSupportFragmentManager(), "datePicker");
+        dialogFragment.show(getFragmentManager(), "datePicker");
     }
 
     /* Date set events from dialog */
@@ -99,11 +98,10 @@ public class AddTaskActivity extends AppCompatActivity implements
     private void saveItem() {
         //TODO Insert a new item
         ContentValues values = new ContentValues(4);
-        values.put("Description",mDescriptionView.getText().toString());
-        values.put("DueDate",mDueDate);
-
-
-
+        values.put(DatabaseContract.TaskColumns.DESCRIPTION, mDescriptionView.getText().toString());
+        values.put(DatabaseContract.TaskColumns.IS_COMPLETE, 0);
+        values.put(DatabaseContract.TaskColumns.IS_PRIORITY, mPrioritySelect.isChecked());
+        values.put(DatabaseContract.TaskColumns.DUE_DATE, mDueDate);
         TaskUpdateService.insertNewTask(this, values);
         finish();
     }

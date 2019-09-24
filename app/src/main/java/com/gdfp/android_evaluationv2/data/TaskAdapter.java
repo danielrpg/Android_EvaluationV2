@@ -24,9 +24,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     private OnItemClickListener mOnItemClickListener;
     private Context mContext;
 
-    public TaskAdapter(Cursor cursor, Context context) {
+    public TaskAdapter(Cursor cursor) {
         mCursor = cursor;
-        this.mContext = context;
     }
 
     /* Callback for list item click events */
@@ -184,7 +183,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             //TODO Format the dueDate
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             String dateString = formatter.format(new Date(dueDate));
-            //CharSequence formatted = DateUtils.getRelativeTimeSpanString(mContext, dueDate);
 
             //TODO Make the dateView TextView visible
             holder.dateView.setVisibility(View.VISIBLE);

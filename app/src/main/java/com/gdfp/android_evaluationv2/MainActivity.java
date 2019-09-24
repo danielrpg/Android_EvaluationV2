@@ -4,7 +4,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,9 +18,9 @@ import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.gdfp.android_evaluationv2.data.DatabaseContract;
 import com.gdfp.android_evaluationv2.data.TaskAdapter;
-import com.gdfp.android_evaluationv2.data.TaskDbHelper;
+
+import static com.gdfp.android_evaluationv2.data.DatabaseContract.CONTENT_URI;
 
 // TODO: Make the Activity implement the LoaderCallbacks interface
 public class MainActivity extends AppCompatActivity implements
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     // TODO: Create TAG for logging
-    private static final String TAG = "MainActivity";
+    private static final String TAG = ".MainActivity";
 
     private TaskAdapter mAdapter;
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mAdapter = new TaskAdapter(getAllItems(), this);
+        mAdapter = new TaskAdapter(null);
         mAdapter.setOnItemClickListener(this);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //TODO: Initialize the Loader
+        getSupportLoaderManager().initLoader(ID_TASK_LOADER,null,this);
 
     }
 
@@ -61,8 +62,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onResume();
 
         //TODO: Restart the Loader
-
-
+        getSupportLoaderManager().restartLoader(ID_TASK_LOADER,null,this);
     }
 
     @Override
@@ -75,8 +75,7 @@ public class MainActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         //TODO: noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings;
     }
 
     /*  Click events in Floating Action Button */
@@ -93,8 +92,7 @@ public class MainActivity extends AppCompatActivity implements
         Intent detailsIntent = new Intent(this, TaskDetailActivity.class);
 
         //TODO: Set the data (URI and item Id) in the Intent
-        detailsIntent.setData();
-
+        detailsIntent.setData(Uri.parse(CONTENT_URI + "/" + v.getTag()));
         //TODO: Start the Activity, passing the Intent
         startActivity(detailsIntent);
 
@@ -129,29 +127,26 @@ public class MainActivity extends AppCompatActivity implements
 
         //TODO: Return a new CursorLoader object, passing the ContentURI,
         // and the sort order
+        return null;
 
     }
 
     private final String getOrder() {
-
         //TODO: Retrieve the order from SharedPreferences
 
-
         //TODO: Create orderToSend String
-
+        String orderToSend;
 
         //TODO: If the order is "default"...
 
-
         //TODO: Set the sort order as "DEFAULT_SORT"
-
 
         //TODO: If the order is "default"...
 
         //TODO: Set the sort order as "DATE_SORT"
 
         //TODO: Return the sort order to the query
-
+        return null;
     }
 
     @Override
