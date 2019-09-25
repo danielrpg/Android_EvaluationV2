@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,10 +15,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gdfp.android_evaluationv2.data.DatabaseContract;
 import com.gdfp.android_evaluationv2.data.TaskAdapter;
 
 import static com.gdfp.android_evaluationv2.data.DatabaseContract.CONTENT_URI;
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     // TODO: Create TAG for logging
-    private static final String TAG = ".MainActivity";
+    private static final String TAG = "MainActivity";
 
     private TaskAdapter mAdapter;
 
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //TODO: Initialize the Loader
-        getSupportLoaderManager().initLoader(ID_TASK_LOADER,null,this);
+        LoaderManager.getInstance(this).initLoader(ID_TASK_LOADER, null, this);
 
     }
 
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onResume();
 
         //TODO: Restart the Loader
-        getSupportLoaderManager().restartLoader(ID_TASK_LOADER,null,this);
+        getSupportLoaderManager().restartLoader(ID_TASK_LOADER, null, this);
     }
 
     @Override
@@ -92,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements
         Intent detailsIntent = new Intent(this, TaskDetailActivity.class);
 
         //TODO: Set the data (URI and item Id) in the Intent
-        detailsIntent.setData(Uri.parse(CONTENT_URI + "/" + v.getTag()));
+        detailsIntent.setData(ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, mAdapter.getItemId(position)));
         //TODO: Start the Activity, passing the Intent
         startActivity(detailsIntent);
 
@@ -127,8 +131,7 @@ public class MainActivity extends AppCompatActivity implements
 
         //TODO: Return a new CursorLoader object, passing the ContentURI,
         // and the sort order
-        return null;
-
+        return new CursorLoader(this,CONTENT_URI,null,null,null, getOrder());
     }
 
     private final String getOrder() {

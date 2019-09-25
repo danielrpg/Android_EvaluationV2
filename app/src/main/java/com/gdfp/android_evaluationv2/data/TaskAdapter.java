@@ -94,7 +94,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     public void onBindViewHolder(TaskHolder holder, int position) {
 
         //TODO: Bind the task data to the views
-
         //TODO Get the column index of the id
         int indexId = mCursor.getColumnIndex(DatabaseContract.TaskColumns._ID);
 

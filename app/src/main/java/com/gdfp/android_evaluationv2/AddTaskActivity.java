@@ -74,7 +74,7 @@ public class AddTaskActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         DatePickerFragment dialogFragment = new DatePickerFragment();
-        dialogFragment.show(getFragmentManager(), "datePicker");
+        dialogFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
     /* Date set events from dialog */

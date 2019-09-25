@@ -1,16 +1,12 @@
 package com.gdfp.android_evaluationv2.views;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.os.Bundle;
-import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
-
-import com.gdfp.android_evaluationv2.MainActivity;
-import com.gdfp.android_evaluationv2.R;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.Calendar;
 
