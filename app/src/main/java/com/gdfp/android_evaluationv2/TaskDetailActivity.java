@@ -186,7 +186,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
 
                 // Show the DatePickerFragment, setting a tag for identification
-                datePickerFragment.show(getFragmentManager(), "datePicker");
+                datePickerFragment.show(getSupportFragmentManager(), "datePicker");
 
                 // Break from the switch statement
                 break;
