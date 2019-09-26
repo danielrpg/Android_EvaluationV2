@@ -80,7 +80,7 @@ public class TaskProvider extends ContentProvider {
                         null,
                         null,
                         null,
-                        DatabaseContract.SORT_BY_DUEDATE_DESC
+                        sortOrder
                 );
 
                 //TODO Break from the switch statement
@@ -98,7 +98,7 @@ public class TaskProvider extends ContentProvider {
                         selectionArgs,
                         null,
                         null,
-                        DatabaseContract.SORT_BY_DUEDATE_DESC
+                        sortOrder
                 );
 
                 //TODO Break from the switch statement
@@ -270,7 +270,6 @@ public class TaskProvider extends ContentProvider {
             // Notify observers of the change
             getContext().getContentResolver().notifyChange(uri, null);
         }
-
         // Return the number of rows deleted
         return count;
     }
@@ -284,6 +283,11 @@ public class TaskProvider extends ContentProvider {
         //TODO Run the job approximately every hour
         // Set the jobInterval variable to be 1 hour
         long jobInterval = 3600000L;
+        ComponentName job = new ComponentName(getContext(),CleanupJobService.class);
+        JobInfo task = new JobInfo.Builder(CLEANUP_JOB_ID,job)
+                .setPersisted(true)
+                .setPeriodic(jobInterval)
+                .build();
 
         if (jobScheduler.schedule(task) != JobScheduler.RESULT_SUCCESS) {
             Log.w(TAG, "Unable to schedule cleanup job");
