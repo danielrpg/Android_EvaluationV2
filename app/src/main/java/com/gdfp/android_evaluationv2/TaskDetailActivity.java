@@ -58,8 +58,8 @@ public class TaskDetailActivity extends AppCompatActivity implements
         //TODO: Initialize the view components of the Activity
         initView();
 
-        //TODO: Get the data from the database and display it in the UI
         getData();
+        //TODO: Get the data from the database and display it in the UI
 
     }
 
@@ -78,8 +78,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
     private void getData() {
 
         //TODO: Query the database, passing the Uri of a specific Task
-        mDetailCursor = getContentResolver().query(
-                mUri,
+        mDetailCursor = getContentResolver().query(mUri,
                 null,
                 null,
                 null,
@@ -107,6 +106,9 @@ public class TaskDetailActivity extends AppCompatActivity implements
         mDetailCursor.moveToFirst();
 
 
+        //TODO Get the value of taskDescription from the cursor
+        String taskDescription = mDetailCursor.getString(indexDescription);
+
         //TODO Get the value of isComplete from the cursor
         int checkbox = mDetailCursor.getInt(indexCheckbox);
 
@@ -116,9 +118,6 @@ public class TaskDetailActivity extends AppCompatActivity implements
         //TODO Get the value of dueDate from the cursor
         long dueDate = mDetailCursor.getLong(indexDueDate);
 
-        //TODO Get the value of taskDescription from the cursor
-        String taskDescription = mDetailCursor.getString(indexDescription);
-
         //TODO If the Task is a priority...
         if (priority == 1) {
 
@@ -126,7 +125,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
             imagePriority.setImageResource(R.drawable.ic_priority);
         } else {//TODO If the Task is a non-priority...
             //TODO Set the imagePriority ImageView with the non-priority icon
-            imagePriority.setImageResource(R.drawable.ic_not_priority);
+            imagePriority.setBackgroundResource(R.drawable.ic_not_priority);
         }
         //TODO If there is no due date...
         if (dueDate == Long.MAX_VALUE) {
@@ -168,14 +167,11 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
             //TODO If the menu item selected was the delete item...
             case R.id.action_delete:
-
                 // Delete the Task, passing the context and the URI
                 // of the to be deleted Task
                 TaskUpdateService.deleteTask(this, mUri);
-
                 // Finish the current Activity and go back to the MainActivity
                 finish();
-
                 // Break from the switch statement
                 break;
 

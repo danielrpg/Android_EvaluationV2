@@ -2,9 +2,13 @@ package com.gdfp.android_evaluationv2.views;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -14,6 +18,7 @@ import java.util.Calendar;
 public class DatePickerFragment extends DialogFragment {
 
     private long mDueDate;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -23,7 +28,7 @@ public class DatePickerFragment extends DialogFragment {
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
         //TODO Create a new instance of DatePickerDialog and return it
-
-        return new DatePickerDialog(getActivity(),null,year,month,day);
+        DatePickerDialog pickerDialog = new DatePickerDialog(getActivity(),null,year,month,day);
+        return pickerDialog;
     }
 }

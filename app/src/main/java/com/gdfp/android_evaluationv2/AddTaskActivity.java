@@ -44,6 +44,7 @@ public class AddTaskActivity extends AppCompatActivity implements
 
         mSelectDate.setOnClickListener(this);
         updateDateDisplay();
+
     }
 
     @Override
@@ -54,17 +55,13 @@ public class AddTaskActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         //TODO noinspection SimplifiableIfStatement
+        if (item.getItemId() == R.id.action_save) {
+            saveItem();
+        }
         return super.onOptionsItemSelected(item);
     }
 
-
-    /* Manage the selected date value */
-    public void setDateSelection(long selectedTimestamp) {
-        mDueDate = selectedTimestamp;
-        updateDateDisplay();
-    }
 
     public long getDateSelection() {
         return mDueDate;
@@ -82,8 +79,13 @@ public class AddTaskActivity extends AppCompatActivity implements
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Set to noon on the selected day
         Calendar c = Calendar.getInstance();
-
         setDateSelection(c.getTimeInMillis());
+    }
+
+    /* Manage the selected date value */
+    public void setDateSelection(long selectedTimestamp) {
+        mDueDate = selectedTimestamp;
+        updateDateDisplay();
     }
 
     private void updateDateDisplay() {
