@@ -3,6 +3,7 @@ package com.gdfp.android_evaluationv2.data;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.gdfp.android_evaluationv2.R;
 import com.gdfp.android_evaluationv2.views.TaskTitleView;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+
+import static android.content.ContentValues.TAG;
 
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
@@ -31,6 +35,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     /* Callback for list item click events */
     public interface OnItemClickListener {
         void onItemClick(View v, int position);
+
         void onItemToggled(boolean active, int position);
 
     }
@@ -54,6 +59,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             itemView.setOnClickListener(this);
             checkBox.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View v) {
             if (v == checkBox) {
@@ -131,7 +137,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         holder.itemView.setTag(id);
 
         //TODO If the Task is done...
-        if (isComplete== 1) {
+        if (isComplete == 1) {
             //TODO Check the checkbox
             holder.checkBox.setChecked(true);
 
@@ -160,7 +166,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         }
 
         //TODO If the Task is a priority...
-        if (isPriority== 1) {
+        if (isPriority == 1) {
             //TODO Set the priorityView ImageView with the priority icon
             holder.priorityView.setImageResource(R.drawable.ic_priority);
 
@@ -203,7 +209,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
      * Retrieve a {@link Task} for the data at the given position.
      *
      * @param position Adapter item position.
-     *
      * @return A new {@link Task} filled with the position's attributes.
      */
     public Task getItem(int position) {
@@ -225,11 +230,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         if (mCursor != null) {
             mCursor.close();
         }
-        mCursor = cursor;
-
         //TODO Notify the adapter that the data has changed
-        if ( cursor != null) {
+        if (mCursor != cursor) {
             notifyDataSetChanged();
         }
+        mCursor = cursor;
     }
 }
+

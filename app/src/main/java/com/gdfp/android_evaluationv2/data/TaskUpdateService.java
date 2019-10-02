@@ -84,7 +84,6 @@ public class TaskUpdateService extends IntentService {
                 ReminderAlarmService.getReminderPendingIntent(this, uri);
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
         manager.cancel(operation);
-
         Log.d(TAG, "Deleted " + count + " tasks");
     }
 }
