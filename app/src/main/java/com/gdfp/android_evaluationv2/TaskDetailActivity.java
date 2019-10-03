@@ -1,6 +1,7 @@
 package com.gdfp.android_evaluationv2;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +29,8 @@ import java.util.Calendar;
 
 public class TaskDetailActivity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener {
+
+    public ContentValues values = new ContentValues(4);
 
     // Declare Custom TaskTitleView
     public TaskTitleView textDescription;
@@ -149,6 +153,14 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
         //TODO Set the description of the Task on the textDate TextView
         textDescription.setText(taskDescription);
+        persistTask(taskDescription,checkbox,priority,dueDate);
+    }
+
+    public void persistTask(String desc, int is_complete, int is_priority, long dueDate) {
+        values.put(DatabaseContract.TaskColumns.DESCRIPTION, desc);
+        values.put(DatabaseContract.TaskColumns.IS_COMPLETE, is_complete);
+        values.put(DatabaseContract.TaskColumns.IS_PRIORITY, is_priority);
+        values.put(DatabaseContract.TaskColumns.DUE_DATE, dueDate);
     }
 
     @Override
@@ -180,10 +192,8 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
                 // Create an instance of the DatePickerFragment
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
-
                 // Show the DatePickerFragment, setting a tag for identification
                 datePickerFragment.show(getSupportFragmentManager(), "datePicker");
-
                 // Break from the switch statement
                 break;
 
@@ -191,6 +201,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
             default:
 
                 // Break from the switch statement
+                TaskUpdateService.updateTask(this, mUri,values);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -230,6 +241,13 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
         // Display Alarm scheduled Toast
         Toast.makeText(this, "Alarm scheduled to " + DateUtils.getRelativeTimeSpanString(this, c.getTimeInMillis()), Toast.LENGTH_SHORT).show();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String formatted = formatter.format(new Date(c.getTimeInMillis()));
+        textDate.setVisibility(View.VISIBLE);
+        textDate.setText(String.format("Due Date : %s", formatted));
+        //update Due date
+        values.remove(DatabaseContract.TaskColumns.DUE_DATE);
+        values.put(DatabaseContract.TaskColumns.DUE_DATE,c.getTimeInMillis());
 
         // Schedule the alarm to the time selected by the user in milliseconds
         AlarmScheduler.scheduleAlarm(getApplicationContext(), c.getTimeInMillis(), mUri);

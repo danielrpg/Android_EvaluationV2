@@ -19,6 +19,8 @@ import com.gdfp.android_evaluationv2.data.TaskUpdateService;
 import com.gdfp.android_evaluationv2.views.DatePickerFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AddTaskActivity extends AppCompatActivity implements
@@ -79,6 +81,7 @@ public class AddTaskActivity extends AppCompatActivity implements
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Set to noon on the selected day
         Calendar c = Calendar.getInstance();
+        c.set(year,month,day,12,30,0);
         setDateSelection(c.getTimeInMillis());
     }
 
@@ -92,8 +95,8 @@ public class AddTaskActivity extends AppCompatActivity implements
         if (getDateSelection() == Long.MAX_VALUE) {
             mDueDateView.setText(R.string.date_empty);
         } else {
-            CharSequence formatted = DateUtils.getRelativeTimeSpanString(this, mDueDate);
-            mDueDateView.setText(formatted);
+            Date d = new Date(mDueDate);
+            mDueDateView.setText(d.toString());
         }
     }
 

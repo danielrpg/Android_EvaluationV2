@@ -68,9 +68,8 @@ public class MainActivity extends AppCompatActivity implements
 
     //TODO: Override the onResume() lifecycle method
     @Override
-    protected void onRestart() {
-        super.onRestart();
-
+    protected void onResume() {
+        super.onResume();
         //TODO: Restart the Loader
         LoaderManager.getInstance(this).restartLoader(ID_TASK_LOADER, null, this);
     }
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements
             orderToSend = DEFAULT_SORT;
         }
         //TODO: If the order is not "default"...
-        else if (order.equals("dueDate")) {
+        else if (order.equals("due")) {
             //TODO: Set the sort order as "DATE_SORT"
             orderToSend = DATE_SORT;
         }
