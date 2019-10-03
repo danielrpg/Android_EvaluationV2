@@ -2,16 +2,18 @@ package com.gdfp.android_evaluationv2.views;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 
-import com.google.developer.taskmaker.R;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
+
+import com.gdfp.android_evaluationv2.R;
 
 /**
  * Custom view to display the state of a task as well as
  * its description text.
  */
-public class TaskTitleView extends android.support.v7.widget.AppCompatTextView {
+public class TaskTitleView extends AppCompatTextView {
     public static final int NORMAL = 0;
     public static final int DONE = 1;
     public static final int OVERDUE = 2;
@@ -62,6 +64,8 @@ public class TaskTitleView extends android.support.v7.widget.AppCompatTextView {
                 return;
         }
 
+
         mState = state;
     }
+
 }

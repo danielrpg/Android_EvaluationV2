@@ -11,8 +11,9 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 public class TaskProvider extends ContentProvider {
     private static final String TAG = TaskProvider.class.getSimpleName();
@@ -72,7 +73,14 @@ public class TaskProvider extends ContentProvider {
             case TASKS:
 
                 //TODO Return a cursor that queries the database for all Tasks
-
+                returnCursor = db.query(
+                        DatabaseContract.TABLE_TASKS,
+                        null,
+                        null,
+                        null,
+                        null,
+                        null,
+                        sortOrder
                 );
 
                 //TODO Break from the switch statement
@@ -81,9 +89,21 @@ public class TaskProvider extends ContentProvider {
             //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
 
+                selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
+
+                selectionArgs = new String[1];
+                String id = uri.getLastPathSegment();
+                selectionArgs[0] = id;
                 //TODO Return a cursor that queries the database for the one Task,
                 // specifying its Id in the selection parameter
-
+                returnCursor = db.query(
+                        DatabaseContract.TABLE_TASKS,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
                 );
 
                 //TODO Break from the switch statement
@@ -103,6 +123,7 @@ public class TaskProvider extends ContentProvider {
         if (context != null) {
 
             //TODO Register to watch this Content URI for changes
+            context.getContentResolver().notifyChange(uri, null);
         }
 
         //TODO Return the cursor
@@ -171,10 +192,14 @@ public class TaskProvider extends ContentProvider {
             case TASKS_WITH_ID:
 
                 //TODO Get the id of said Task
+                String id = uri.getLastPathSegment();
 
                 //TODO Create a selection filter using the _ID column of the Task column
+                selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
 
                 //TODO Create a selection argument using the id of the Task
+                selectionArgs = new String[1];
+                selectionArgs[0] = id;
 
                 // Break from the switch statement
                 break;
@@ -214,6 +239,8 @@ public class TaskProvider extends ContentProvider {
             case TASKS:
 
                 //TODO Rows aren't counted with null selection
+                selectionArgs = new String[1];
+                selectionArgs[0] = null;
 
                 // Break from the switch statement
                 break;
@@ -222,11 +249,14 @@ public class TaskProvider extends ContentProvider {
             case TASKS_WITH_ID:
 
                 //TODO Get the id of said Task
+                String id = uri.getLastPathSegment();
 
                 // Create a selection filter using the _ID column of the Task column
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
 
                 //TODO Create a selection argument using the id of the Task
+                selectionArgs = new String[1];
+                selectionArgs[0] = id;
 
                 // Break from the switch statement
                 break;
@@ -243,6 +273,7 @@ public class TaskProvider extends ContentProvider {
 
         //TODO Delete the Task in the database using the passed filters,
         // returning the number of rows deleted, if any.
+        int count = db.delete(DatabaseContract.TABLE_TASKS, selection, selectionArgs);
 
         //TODO If there were row(s) deleted...
         if (count > 0) {
@@ -250,7 +281,6 @@ public class TaskProvider extends ContentProvider {
             // Notify observers of the change
             getContext().getContentResolver().notifyChange(uri, null);
         }
-
         // Return the number of rows deleted
         return count;
     }
@@ -264,6 +294,11 @@ public class TaskProvider extends ContentProvider {
         //TODO Run the job approximately every hour
         // Set the jobInterval variable to be 1 hour
         long jobInterval = 3600000L;
+        ComponentName job = new ComponentName(getContext(),CleanupJobService.class);
+        JobInfo task = new JobInfo.Builder(CLEANUP_JOB_ID,job)
+                .setPersisted(true)
+                .setPeriodic(jobInterval)
+                .build();
 
         if (jobScheduler.schedule(task) != JobScheduler.RESULT_SUCCESS) {
             Log.w(TAG, "Unable to schedule cleanup job");

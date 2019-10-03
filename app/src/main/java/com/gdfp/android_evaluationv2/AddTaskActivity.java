@@ -3,20 +3,21 @@ package com.gdfp.android_evaluationv2;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.os.Bundle;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SwitchCompat;
-import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-import com.google.developer.taskmaker.data.DatabaseContract.TaskColumns;
-import com.google.developer.taskmaker.data.TaskUpdateService;
-import com.google.developer.taskmaker.views.DatePickerFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
+import com.gdfp.android_evaluationv2.data.DatabaseContract;
+import com.gdfp.android_evaluationv2.data.TaskUpdateService;
+import com.gdfp.android_evaluationv2.views.DatePickerFragment;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 
@@ -43,6 +44,7 @@ public class AddTaskActivity extends AppCompatActivity implements
 
         mSelectDate.setOnClickListener(this);
         updateDateDisplay();
+
     }
 
     @Override
@@ -53,19 +55,13 @@ public class AddTaskActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         //TODO noinspection SimplifiableIfStatement
-
-
+        if (item.getItemId() == R.id.action_save) {
+            saveItem();
+        }
         return super.onOptionsItemSelected(item);
     }
 
-
-    /* Manage the selected date value */
-    public void setDateSelection(long selectedTimestamp) {
-        mDueDate = selectedTimestamp;
-        updateDateDisplay();
-    }
 
     public long getDateSelection() {
         return mDueDate;
@@ -83,9 +79,13 @@ public class AddTaskActivity extends AppCompatActivity implements
     public void onDateSet(DatePicker view, int year, int month, int day) {
         //Set to noon on the selected day
         Calendar c = Calendar.getInstance();
-
-
         setDateSelection(c.getTimeInMillis());
+    }
+
+    /* Manage the selected date value */
+    public void setDateSelection(long selectedTimestamp) {
+        mDueDate = selectedTimestamp;
+        updateDateDisplay();
     }
 
     private void updateDateDisplay() {
@@ -100,8 +100,10 @@ public class AddTaskActivity extends AppCompatActivity implements
     private void saveItem() {
         //TODO Insert a new item
         ContentValues values = new ContentValues(4);
-
-
+        values.put(DatabaseContract.TaskColumns.DESCRIPTION, mDescriptionView.getText().toString());
+        values.put(DatabaseContract.TaskColumns.IS_COMPLETE, 0);
+        values.put(DatabaseContract.TaskColumns.IS_PRIORITY, mPrioritySelect.isChecked());
+        values.put(DatabaseContract.TaskColumns.DUE_DATE, mDueDate);
         TaskUpdateService.insertNewTask(this, values);
         finish();
     }

@@ -5,8 +5,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.google.developer.taskmaker.R;
-import com.google.developer.taskmaker.data.DatabaseContract.TaskColumns;
+import com.gdfp.android_evaluationv2.R;
 
 public class TaskDbHelper extends SQLiteOpenHelper {
 
@@ -16,11 +15,11 @@ public class TaskDbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_TABLE_TASKS = String.format("CREATE TABLE %s"
             +" (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER)",
             DatabaseContract.TABLE_TASKS,
-            TaskColumns._ID,
-            TaskColumns.DESCRIPTION,
-            TaskColumns.IS_COMPLETE,
-            TaskColumns.IS_PRIORITY,
-            TaskColumns.DUE_DATE
+            DatabaseContract.TaskColumns._ID,
+            DatabaseContract.TaskColumns.DESCRIPTION,
+            DatabaseContract.TaskColumns.IS_COMPLETE,
+            DatabaseContract.TaskColumns.IS_PRIORITY,
+            DatabaseContract.TaskColumns.DUE_DATE
     );
 
     private final Context mContext;
@@ -44,11 +43,10 @@ public class TaskDbHelper extends SQLiteOpenHelper {
 
     private void loadDemoTask(SQLiteDatabase db) {
         ContentValues values = new ContentValues();
-        values.put(TaskColumns.DESCRIPTION, mContext.getResources().getString(R.string.demo_task));
-        values.put(TaskColumns.IS_COMPLETE, 0);
-        values.put(TaskColumns.IS_PRIORITY, 1);
-        values.put(TaskColumns.DUE_DATE, Long.MAX_VALUE);
-
+        values.put(DatabaseContract.TaskColumns.DESCRIPTION, mContext.getResources().getString(R.string.demo_task));
+        values.put(DatabaseContract.TaskColumns.IS_COMPLETE, 0);
+        values.put(DatabaseContract.TaskColumns.IS_PRIORITY, 1);
+        values.put(DatabaseContract.TaskColumns.DUE_DATE, Long.MAX_VALUE);
         db.insertOrThrow(DatabaseContract.TABLE_TASKS, null, values);
     }
 }

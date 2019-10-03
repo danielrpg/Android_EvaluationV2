@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?android:listPreferredItemHeight"
-    android:background="?android:attr/selectableItemBackground"
+    android:layout_height="?attr/listPreferredItemHeight"
+    android:background="?attr/selectableItemBackground"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingStart="@dimen/activity_horizontal_margin">
 
@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.google.developer.taskmaker.views.TaskTitleView
+        <com.gdfp.android_evaluationv2.views.TaskTitleView
             android:id="@+id/text_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
