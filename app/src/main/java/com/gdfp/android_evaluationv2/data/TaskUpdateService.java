@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
+import com.gdfp.android_evaluationv2.reminders.AlarmScheduler;
 import com.gdfp.android_evaluationv2.reminders.ReminderAlarmService;
 
 
