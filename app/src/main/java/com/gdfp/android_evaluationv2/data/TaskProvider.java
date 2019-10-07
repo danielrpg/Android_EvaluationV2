@@ -15,8 +15,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.gdfp.android_evaluationv2.reminders.AlarmScheduler;
-
 public class TaskProvider extends ContentProvider {
     private static final String TAG = TaskProvider.class.getSimpleName();
 
@@ -58,14 +56,23 @@ public class TaskProvider extends ContentProvider {
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs,
                         String sortOrder) {
+        //TODO: Implement task query
+        //TODO: Expected "query all" Uri: content://com.google.developer.taskmaker/tasks
+        //TODO: Expected "query one" Uri: content://com.google.developer.taskmaker/tasks/{id}
+
         // Create a Cursor object to return
         Cursor returnCursor;
 
         // Get a reference to the readable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
+        //TODO Match the URI passed in
         switch (sUriMatcher.match(uri)) {
+
+            //TODO If the URI does not contain an ID of a single Task...
             case TASKS:
+
+                //TODO Return a cursor that queries the database for all Tasks
                 returnCursor = db.query(
                         DatabaseContract.TABLE_TASKS,
                         null,
@@ -75,7 +82,11 @@ public class TaskProvider extends ContentProvider {
                         null,
                         sortOrder
                 );
+
+                //TODO Break from the switch statement
                 break;
+
+            //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
 
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
@@ -83,6 +94,8 @@ public class TaskProvider extends ContentProvider {
                 selectionArgs = new String[1];
                 String id = uri.getLastPathSegment();
                 selectionArgs[0] = id;
+                //TODO Return a cursor that queries the database for the one Task,
+                // specifying its Id in the selection parameter
                 returnCursor = db.query(
                         DatabaseContract.TABLE_TASKS,
                         projection,
@@ -92,30 +105,56 @@ public class TaskProvider extends ContentProvider {
                         null,
                         sortOrder
                 );
+
+                //TODO Break from the switch statement
                 break;
+
+            //TODO In the default case...
             default:
+
+                //TODO Throw a UnsupportedOperationException
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
         }
+
+        //TODO Get the Context
         Context context = getContext();
+
+        //TODO If the context is not null...
         if (context != null) {
+
+            //TODO Register to watch this Content URI for changes
             context.getContentResolver().notifyChange(uri, null);
         }
+
+        //TODO Return the cursor
         return returnCursor;
     }
 
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        //TODO: Implement new task insert
+        //TODO: Expected Uri: content://com.google.developer.taskmaker/tasks
+
+        //TODO Get a reference to the writable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+        //TODO Declare the return Uri
         Uri returnUri;
+
+        //TODO Match the URI passed in
         switch (sUriMatcher.match(uri)) {
+
+            //TODO If the URI does not contain an ID of a single Task...
             case TASKS:
+
+                //TODO Insert the passed values into the Task table in the database
                 db.insert(
                         DatabaseContract.TABLE_TASKS,
                         null,
                         values
                 );
-                AlarmScheduler.scheduleAlarm(getContext().getApplicationContext(), values.getAsLong(DatabaseContract.TaskColumns.DUE_DATE), uri);
+
                 // Get a reference to the ContentUri
                 returnUri = DatabaseContract.CONTENT_URI;
 
@@ -128,21 +167,37 @@ public class TaskProvider extends ContentProvider {
                 // Throw a UnsupportedOperationException
                 throw new UnsupportedOperationException("Unknown URI:" + uri);
         }
+
+        //TODO Get the Context
         Context context = getContext();
+
+        //TODO If the context is not null...
         if (context != null) {
+
+            //TODO Register to watch this Content URI for changes
             context.getContentResolver().notifyChange(uri, null);
         }
 
-
+        //TODO Return the Uri
         return returnUri;
     }
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+        //TODO: Implement existing task update
+        //TODO: Expected Uri: content://com.google.developer.taskmaker/tasks/{id}
         switch (sUriMatcher.match(uri)) {
+
+            //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
+
+                //TODO Get the id of said Task
                 String id = uri.getLastPathSegment();
+
+                //TODO Create a selection filter using the _ID column of the Task column
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
+
+                //TODO Create a selection argument using the id of the Task
                 selectionArgs = new String[1];
                 selectionArgs[0] = id;
 
@@ -158,6 +213,9 @@ public class TaskProvider extends ContentProvider {
 
         // Get a reference to the writable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+        //TODO Update the Task in the database with the passed values and filters,
+        // returning the number of rows updated, if any.
         int count = db.update(DatabaseContract.TABLE_TASKS, values, selection, selectionArgs);
 
         // If there were row(s) updated...
@@ -166,24 +224,37 @@ public class TaskProvider extends ContentProvider {
             // Notify observers of the change
             getContext().getContentResolver().notifyChange(uri, null);
         }
+
         // Return the number of rows updated
         return count;
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
+
+        //TODO Match the URI passed in
         switch (sUriMatcher.match(uri)) {
+
+            //TODO If the URI does not contain an ID of a single Task...
             case TASKS:
+
+                //TODO Rows aren't counted with null selection
                 selectionArgs = new String[1];
                 selectionArgs[0] = null;
 
                 // Break from the switch statement
                 break;
+
+            //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
+
+                //TODO Get the id of said Task
                 String id = uri.getLastPathSegment();
 
                 // Create a selection filter using the _ID column of the Task column
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
+
+                //TODO Create a selection argument using the id of the Task
                 selectionArgs = new String[1];
                 selectionArgs[0] = id;
 
@@ -199,7 +270,12 @@ public class TaskProvider extends ContentProvider {
 
         // Get a reference to the writable SQLiteDatabase
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+        //TODO Delete the Task in the database using the passed filters,
+        // returning the number of rows deleted, if any.
         int count = db.delete(DatabaseContract.TABLE_TASKS, selection, selectionArgs);
+
+        //TODO If there were row(s) deleted...
         if (count > 0) {
 
             // Notify observers of the change
@@ -214,6 +290,9 @@ public class TaskProvider extends ContentProvider {
         Log.d(TAG, "Scheduling cleanup job");
         JobScheduler jobScheduler = (JobScheduler) getContext()
                 .getSystemService(Context.JOB_SCHEDULER_SERVICE);
+
+        //TODO Run the job approximately every hour
+        // Set the jobInterval variable to be 1 hour
         long jobInterval = 3600000L;
         ComponentName job = new ComponentName(getContext(),CleanupJobService.class);
         JobInfo task = new JobInfo.Builder(CLEANUP_JOB_ID,job)
