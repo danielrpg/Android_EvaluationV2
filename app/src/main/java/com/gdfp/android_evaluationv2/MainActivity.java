@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements
     private final String getOrder() {
         SharedPreferences prefs =
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String order = prefs.getString("sort", null);
+        String order = prefs.getString("sort", "default");
         String orderToSend = null;
         if (order.equals("default")) {
             orderToSend = DEFAULT_SORT;
