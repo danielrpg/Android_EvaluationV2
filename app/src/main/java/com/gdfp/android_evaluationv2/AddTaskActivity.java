@@ -16,6 +16,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.gdfp.android_evaluationv2.data.DatabaseContract;
 import com.gdfp.android_evaluationv2.data.TaskUpdateService;
+import com.gdfp.android_evaluationv2.reminders.AlarmScheduler;
 import com.gdfp.android_evaluationv2.views.DatePickerFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -57,7 +58,6 @@ public class AddTaskActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        //TODO noinspection SimplifiableIfStatement
         if (item.getItemId() == R.id.action_save) {
             saveItem();
         }
@@ -83,6 +83,7 @@ public class AddTaskActivity extends AppCompatActivity implements
         Calendar c = Calendar.getInstance();
         c.set(year,month,day,12,30,0);
         setDateSelection(c.getTimeInMillis());
+
     }
 
     /* Manage the selected date value */
@@ -101,7 +102,6 @@ public class AddTaskActivity extends AppCompatActivity implements
     }
 
     private void saveItem() {
-        //TODO Insert a new item
         ContentValues values = new ContentValues(4);
         values.put(DatabaseContract.TaskColumns.DESCRIPTION, mDescriptionView.getText().toString());
         values.put(DatabaseContract.TaskColumns.IS_COMPLETE, 0);

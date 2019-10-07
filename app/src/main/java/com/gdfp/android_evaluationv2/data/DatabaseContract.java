@@ -23,16 +23,13 @@ public class DatabaseContract {
     public static final String CONTENT_AUTHORITY = "com.google.developer.taskmaker";
 
     /* Sort order constants */
-    //TODO Priority first, Completed last, the rest by date
     public static final String DEFAULT_SORT = String.format("%s ASC, %s DESC, %s ASC",
             TaskColumns.IS_COMPLETE, TaskColumns.IS_PRIORITY, TaskColumns.DUE_DATE);
 
 
-    //TODO Completed last, then by date, followed by priority
     public static final String DATE_SORT = String.format("%s ASC, %s ASC, %s DESC",
             TaskColumns.IS_COMPLETE, TaskColumns.DUE_DATE, TaskColumns.IS_PRIORITY);
 
-    //TODO Base content Uri for accessing the provider
     public static final Uri CONTENT_URI = new Uri.Builder().scheme("content")
             .authority(CONTENT_AUTHORITY)
             .appendPath(TABLE_TASKS)
