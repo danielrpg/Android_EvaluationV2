@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements
         SharedPreferences prefs =
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         //TODO: Create orderToSend String
-        String order = prefs.getString("sort", null);
+        String order = prefs.getString("sort", "default");
         String orderToSend = null;
         //TODO: If the order is "default"...
         if (order.equals("default")) {
