@@ -47,7 +47,6 @@ public class TaskDbHelper extends SQLiteOpenHelper {
         values.put(DatabaseContract.TaskColumns.IS_COMPLETE, 0);
         values.put(DatabaseContract.TaskColumns.IS_PRIORITY, 1);
         values.put(DatabaseContract.TaskColumns.DUE_DATE, Long.MAX_VALUE);
-
         db.insertOrThrow(DatabaseContract.TABLE_TASKS, null, values);
     }
 }

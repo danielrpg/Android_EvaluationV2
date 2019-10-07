@@ -89,6 +89,11 @@ public class TaskProvider extends ContentProvider {
             //TODO If the URI does contain an ID of a single Task...
             case TASKS_WITH_ID:
 
+                selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
+
+                selectionArgs = new String[1];
+                String id = uri.getLastPathSegment();
+                selectionArgs[0] = id;
                 //TODO Return a cursor that queries the database for the one Task,
                 // specifying its Id in the selection parameter
                 returnCursor = db.query(
@@ -187,12 +192,14 @@ public class TaskProvider extends ContentProvider {
             case TASKS_WITH_ID:
 
                 //TODO Get the id of said Task
+                String id = uri.getLastPathSegment();
 
                 //TODO Create a selection filter using the _ID column of the Task column
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
 
                 //TODO Create a selection argument using the id of the Task
-
+                selectionArgs = new String[1];
+                selectionArgs[0] = id;
 
                 // Break from the switch statement
                 break;
@@ -232,7 +239,8 @@ public class TaskProvider extends ContentProvider {
             case TASKS:
 
                 //TODO Rows aren't counted with null selection
-
+                selectionArgs = new String[1];
+                selectionArgs[0] = null;
 
                 // Break from the switch statement
                 break;
@@ -241,11 +249,14 @@ public class TaskProvider extends ContentProvider {
             case TASKS_WITH_ID:
 
                 //TODO Get the id of said Task
+                String id = uri.getLastPathSegment();
 
                 // Create a selection filter using the _ID column of the Task column
                 selection = String.format("%s = ?", DatabaseContract.TaskColumns._ID);
 
                 //TODO Create a selection argument using the id of the Task
+                selectionArgs = new String[1];
+                selectionArgs[0] = id;
 
                 // Break from the switch statement
                 break;
@@ -293,6 +304,4 @@ public class TaskProvider extends ContentProvider {
             Log.w(TAG, "Unable to schedule cleanup job");
         }
     }
-
-
 }

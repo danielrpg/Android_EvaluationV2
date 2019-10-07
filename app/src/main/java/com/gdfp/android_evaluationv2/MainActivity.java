@@ -2,7 +2,9 @@ package com.gdfp.android_evaluationv2;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,13 +20,17 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.AsyncTaskLoader;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.gdfp.android_evaluationv2.data.DatabaseContract;
 import com.gdfp.android_evaluationv2.data.TaskAdapter;
+import com.gdfp.android_evaluationv2.data.TaskUpdateService;
 
 import static com.gdfp.android_evaluationv2.data.DatabaseContract.CONTENT_URI;
+import static com.gdfp.android_evaluationv2.data.DatabaseContract.DATE_SORT;
+import static com.gdfp.android_evaluationv2.data.DatabaseContract.DEFAULT_SORT;
 
 // TODO: Make the Activity implement the LoaderCallbacks interface
 public class MainActivity extends AppCompatActivity implements
@@ -64,9 +70,8 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onResume() {
         super.onResume();
-
         //TODO: Restart the Loader
-        getSupportLoaderManager().restartLoader(ID_TASK_LOADER, null, this);
+        LoaderManager.getInstance(this).restartLoader(ID_TASK_LOADER, null, this);
     }
 
     @Override
@@ -77,15 +82,19 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
         //TODO: noinspection SimplifiableIfStatement
-        return id == R.id.action_settings;
+        if (item.getItemId() == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /*  Click events in Floating Action Button */
     @Override
     public void onClick(View v) {
-
+        Intent intent = new Intent(this, AddTaskActivity.class);
+        startActivity(intent);
     }
 
     /* Click events in RecyclerView items */
@@ -107,22 +116,25 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemToggled(boolean active, int position) {
         //TODO: Handle task item checkbox event
         // Create a ContentValues object
-        ContentValues cv = new ContentValues();
+        ContentValues contentValues = new ContentValues();
 
         //TODO: If the Task is checked...
         if (active) {
             //TODO: Store the Task as inactive in the IS_COMPLETE column
-
+            contentValues.put(DatabaseContract.TaskColumns.IS_COMPLETE, 1);
         }
         //TODO: If the Task is not checked...
         if (!active) {
-
             //TODO: Store the Task as active in the IS_COMPLETE column
-
+            contentValues.put(DatabaseContract.TaskColumns.IS_COMPLETE, 0);
         }
+
+        contentValues.put(DatabaseContract.TaskColumns.DESCRIPTION, mAdapter.getItem(position).description);
+        contentValues.put(DatabaseContract.TaskColumns.DUE_DATE, mAdapter.getItem(position).dueDateMillis);
+        contentValues.put(DatabaseContract.TaskColumns.IS_PRIORITY, mAdapter.getItem(position).isPriority);
         //TODO: Update the Task, passing the context, the ContentURI, the Task's Id,
         // and the ContentValues object
-
+        TaskUpdateService.updateTask(this, ContentUris.withAppendedId(DatabaseContract.CONTENT_URI, mAdapter.getItemId(position)), contentValues);
     }
 
     @NonNull
@@ -131,25 +143,28 @@ public class MainActivity extends AppCompatActivity implements
 
         //TODO: Return a new CursorLoader object, passing the ContentURI,
         // and the sort order
-        return new CursorLoader(this,CONTENT_URI,null,null,null, getOrder());
+        return new CursorLoader(this, CONTENT_URI, null, null, null, getOrder());
     }
 
     private final String getOrder() {
         //TODO: Retrieve the order from SharedPreferences
-
+        SharedPreferences prefs =
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         //TODO: Create orderToSend String
-        String orderToSend;
-
+        String order = prefs.getString("sort", null);
+        String orderToSend = null;
         //TODO: If the order is "default"...
-
-        //TODO: Set the sort order as "DEFAULT_SORT"
-
-        //TODO: If the order is "default"...
-
-        //TODO: Set the sort order as "DATE_SORT"
-
+        if (order.equals("default")) {
+            //TODO: Set the sort order as "DEFAULT_SORT"
+            orderToSend = DEFAULT_SORT;
+        }
+        //TODO: If the order is not "default"...
+        else if (order.equals("due")) {
+            //TODO: Set the sort order as "DATE_SORT"
+            orderToSend = DATE_SORT;
+        }
         //TODO: Return the sort order to the query
-        return null;
+        return orderToSend;
     }
 
     @Override

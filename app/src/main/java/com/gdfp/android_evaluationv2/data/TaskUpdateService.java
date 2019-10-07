@@ -50,14 +50,15 @@ public class TaskUpdateService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        if (ACTION_INSERT.equals(intent.getAction())) {
-            ContentValues values = intent.getParcelableExtra(EXTRA_VALUES);
-            performInsert(values);
-        } else if (ACTION_UPDATE.equals(intent.getAction())) {
+        String action = intent.getAction();
+        if (ACTION_DELETE.equals(action)) {
+            performDelete(intent.getData());
+        } else if (ACTION_UPDATE.equals(action)) {
             ContentValues values = intent.getParcelableExtra(EXTRA_VALUES);
             performUpdate(intent.getData(), values);
-        } else if (ACTION_DELETE.equals(intent.getAction())) {
-            performDelete(intent.getData());
+        } else if (ACTION_INSERT.equals(action)) {
+            ContentValues values = intent.getParcelableExtra(EXTRA_VALUES);
+            performInsert(values);
         }
     }
 
@@ -74,15 +75,15 @@ public class TaskUpdateService extends IntentService {
         Log.d(TAG, "Updated " + count + " task items");
     }
 
+    //send task id on selectionArgs
     private void performDelete(Uri uri) {
-        int count = getContentResolver().delete(uri, null, null);
 
+        int count = getContentResolver().delete(uri, null, null);
         //Cancel any reminders that might be set for this item
         PendingIntent operation =
                 ReminderAlarmService.getReminderPendingIntent(this, uri);
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
         manager.cancel(operation);
-
-        Log.d(TAG, "Deleted "+count+" tasks");
+        Log.d(TAG, "Deleted " + count + " tasks");
     }
 }

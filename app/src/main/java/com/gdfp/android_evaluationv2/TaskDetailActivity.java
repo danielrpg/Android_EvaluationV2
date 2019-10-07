@@ -1,6 +1,7 @@
 package com.gdfp.android_evaluationv2;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +29,8 @@ import java.util.Calendar;
 
 public class TaskDetailActivity extends AppCompatActivity implements
         DatePickerDialog.OnDateSetListener {
+
+    public ContentValues values = new ContentValues(4);
 
     // Declare Custom TaskTitleView
     public TaskTitleView textDescription;
@@ -58,8 +62,8 @@ public class TaskDetailActivity extends AppCompatActivity implements
         //TODO: Initialize the view components of the Activity
         initView();
 
-        //TODO: Get the data from the database and display it in the UI
         getData();
+        //TODO: Get the data from the database and display it in the UI
 
     }
 
@@ -78,8 +82,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
     private void getData() {
 
         //TODO: Query the database, passing the Uri of a specific Task
-        mDetailCursor = getContentResolver().query(
-                mUri,
+        mDetailCursor = getContentResolver().query(mUri,
                 null,
                 null,
                 null,
@@ -107,6 +110,9 @@ public class TaskDetailActivity extends AppCompatActivity implements
         mDetailCursor.moveToFirst();
 
 
+        //TODO Get the value of taskDescription from the cursor
+        String taskDescription = mDetailCursor.getString(indexDescription);
+
         //TODO Get the value of isComplete from the cursor
         int checkbox = mDetailCursor.getInt(indexCheckbox);
 
@@ -116,9 +122,6 @@ public class TaskDetailActivity extends AppCompatActivity implements
         //TODO Get the value of dueDate from the cursor
         long dueDate = mDetailCursor.getLong(indexDueDate);
 
-        //TODO Get the value of taskDescription from the cursor
-        String taskDescription = mDetailCursor.getString(indexDescription);
-
         //TODO If the Task is a priority...
         if (priority == 1) {
 
@@ -126,7 +129,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
             imagePriority.setImageResource(R.drawable.ic_priority);
         } else {//TODO If the Task is a non-priority...
             //TODO Set the imagePriority ImageView with the non-priority icon
-            imagePriority.setImageResource(R.drawable.ic_not_priority);
+            imagePriority.setBackgroundResource(R.drawable.ic_not_priority);
         }
         //TODO If there is no due date...
         if (dueDate == Long.MAX_VALUE) {
@@ -150,6 +153,14 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
         //TODO Set the description of the Task on the textDate TextView
         textDescription.setText(taskDescription);
+        persistTask(taskDescription,checkbox,priority,dueDate);
+    }
+
+    public void persistTask(String desc, int is_complete, int is_priority, long dueDate) {
+        values.put(DatabaseContract.TaskColumns.DESCRIPTION, desc);
+        values.put(DatabaseContract.TaskColumns.IS_COMPLETE, is_complete);
+        values.put(DatabaseContract.TaskColumns.IS_PRIORITY, is_priority);
+        values.put(DatabaseContract.TaskColumns.DUE_DATE, dueDate);
     }
 
     @Override
@@ -168,14 +179,11 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
             //TODO If the menu item selected was the delete item...
             case R.id.action_delete:
-
                 // Delete the Task, passing the context and the URI
                 // of the to be deleted Task
                 TaskUpdateService.deleteTask(this, mUri);
-
                 // Finish the current Activity and go back to the MainActivity
                 finish();
-
                 // Break from the switch statement
                 break;
 
@@ -184,10 +192,8 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
                 // Create an instance of the DatePickerFragment
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
-
                 // Show the DatePickerFragment, setting a tag for identification
                 datePickerFragment.show(getSupportFragmentManager(), "datePicker");
-
                 // Break from the switch statement
                 break;
 
@@ -195,6 +201,7 @@ public class TaskDetailActivity extends AppCompatActivity implements
             default:
 
                 // Break from the switch statement
+                TaskUpdateService.updateTask(this, mUri,values);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -234,6 +241,13 @@ public class TaskDetailActivity extends AppCompatActivity implements
 
         // Display Alarm scheduled Toast
         Toast.makeText(this, "Alarm scheduled to " + DateUtils.getRelativeTimeSpanString(this, c.getTimeInMillis()), Toast.LENGTH_SHORT).show();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String formatted = formatter.format(new Date(c.getTimeInMillis()));
+        textDate.setVisibility(View.VISIBLE);
+        textDate.setText(String.format("Due Date : %s", formatted));
+        //update Due date
+        values.remove(DatabaseContract.TaskColumns.DUE_DATE);
+        values.put(DatabaseContract.TaskColumns.DUE_DATE,c.getTimeInMillis());
 
         // Schedule the alarm to the time selected by the user in milliseconds
         AlarmScheduler.scheduleAlarm(getApplicationContext(), c.getTimeInMillis(), mUri);
